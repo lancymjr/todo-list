@@ -1,0 +1,140 @@
+/* || RESET */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+/* || VARIABLES */
+
+:root {
+  /* FONTS */
+  --FF: "Fira sans", sans-serif;
+
+  /* COLORS */
+  --BGCOLOR: #374151;
+  --HEADING-COLOR: #6b7280;
+  --INPUT-COLOR: #1f2937;
+  --LI-COLOR: #111827;
+  --FONT-COLOR: #fff;
+  --PINK: #ec4899;
+  --PURPLE: #8b5cf6;
+
+  /* BORDERS */
+  --BORDER-RADIUS: 10px;
+
+  /* STANDARD PADDING */
+  --PADDING: 12px;
+
+  /* STANDARD MARGIN */
+  --MARGIN: 20px;
+}
+
+/* || GENERAL STYLES */
+
+body {
+  background-color: var(--BGCOLOR);
+  font-family: var(--FF);
+  width: clamp(370px, 75vw, 800px);
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.heading {
+  color: var(--HEADING-COLOR);
+  font-weight: 300;
+}
+
+.heading1 {
+  margin-top: 30px;
+}
+
+.heading2 {
+  margin-top: 40px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.addInput {
+  background-color: var(--INPUT-COLOR);
+  color: var(--FONT-COLOR);
+  padding: var(--PADDING);
+  margin-top: var(--MARGIN);
+  border-radius: var(--BORDER-RADIUS);
+  width: calc(100% - 99px);
+  border: none;
+}
+
+.li-Input {
+  background-color: var(--LI-COLOR);
+  color: var(--FONT-COLOR);
+  border: none;
+}
+
+.edit-li-Input-Color {
+  color: var(--PINK);
+}
+
+.list-item {
+  background-color: var(--LI-COLOR);
+  color: var(--FONT-COLOR);
+  margin-top: 10px;
+  padding: var(--PADDING);
+  border-radius: var(--BORDER-RADIUS);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnContainer:last-child {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.addTaskBtn {
+  margin-left: var(--MARGIN);
+}
+
+.editBtn,
+.addTaskBtn {
+  background-image: linear-gradient(to right, var(--PINK), var(--PURPLE));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.deleteBtn {
+  background-color: transparent;
+  color: red;
+}
+
+.deleteBtn-Animation {
+  animation-name: deleteAnimation;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes deleteAnimation {
+  to {
+    transform: rotate(2deg);
+    opacity: 0;
+  }
+}
