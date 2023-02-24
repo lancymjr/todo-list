@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
+    <title>My To-Do List</title>
     <link rel="stylesheet" href="./css/main.css" />
     <script type="module" src="./js/main.js"></script>
   </head>
   <body>
     <header>
-      <h1 class="heading heading1">My To-Do List</h1>
+      <h1 class="heading">My Lists</h1>
+      <button class="navBtn" id="navBtn">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </button>
+    </header>
+    <main>
+      <h2 class="heading center ul-list-name">Grocery List</h2>
       <form id="form">
         <input
           type="text"
@@ -21,9 +29,7 @@
         />
         <button class="addTaskBtn" type="submit">Add task</button>
       </form>
-    </header>
-    <main>
-      <h2 class="heading heading2">Tasks</h2>
+      <h2 class="heading">Tasks</h2>
       <ul id="list"></ul>
     </main>
   </body>

@@ -4,10 +4,30 @@ const form = document.querySelector("#form");
 const input = document.querySelector("#input");
 const ul = document.querySelector("#list");
 
+// || JSON LOCAL DATA
+
+let myArray = [];
+
+if (localStorage.getItem("mylist") === null) {
+  localStorage.setItem("mylist", JSON.stringify(myArray));
+} else {
+  myArray = JSON.parse(localStorage.getItem("mylist"));
+  for (let i = 0; i < myArray.length; i++) {
+    task(myArray[i]);
+  }
+}
+
+// || ADDING TASKS
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (input.value.length > 0) {
-    task(input.value);
+  const regex = / {2,}/g;
+  const value = input.value.replaceAll(regex, " ").trim();
+  if (value.length !== 0) {
+    myArray.push(value);
+    localStorage.setItem("mylist", JSON.stringify(myArray));
+    task(value);
+  } else {
+    alert("Please enter a task.");
   }
   input.value = "";
 });
@@ -55,15 +75,26 @@ function task(input) {
   // function of delete button. Plays animation, waits 2 seconds, then deletes the grandparent element on click
   deleteBtn.addEventListener("click", function () {
     li.classList.add("deleteBtn-Animation");
+    for (let i = 0; i < myArray.length; i++) {
+      if (myArray[i] === input) {
+        myArray.splice(i, 1);
+      }
+    }
+    localStorage.setItem("mylist", JSON.stringify(myArray));
     setTimeout(function () {
       deleteBtn.parentElement.parentElement.remove();
-    }, 1500);
+    }, 1000);
   });
 
-  // appends edit and delete button to btnContainer, appends li-input & btnContainer to list-item, then appends list-item to unordered list
+  // appends edit, complete, & delete button to btnContainer, appends li-input & btnContainer to list-item, then appends list-item to unordered list
   btnContainer.append(editBtn);
   btnContainer.append(deleteBtn);
   li.append(li_Input);
   li.append(btnContainer);
   ul.append(li);
 }
+
+const test = document.querySelector("#navBtn");
+test.addEventListener("click", function () {
+  test.classList.toggle("navBtn-Animation");
+});

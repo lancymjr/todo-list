@@ -13,6 +13,12 @@ button {
   font: inherit;
 }
 
+/* || UTILITY */
+
+.center {
+  text-align: center;
+}
+
 /* || VARIABLES */
 
 :root {
@@ -43,22 +49,55 @@ button {
 body {
   background-color: var(--BGCOLOR);
   font-family: var(--FF);
-  width: clamp(370px, 75vw, 800px);
+  width: 100vw;
   margin: 0 auto;
-  padding: 10px;
+}
+
+header {
+  background-color: var(--LI-COLOR);
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .heading {
   color: var(--HEADING-COLOR);
   font-weight: 300;
+  margin: var(--MARGIN);
 }
 
-.heading1 {
-  margin-top: 30px;
+.navBtn {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: var(--MARGIN);
+  /* background-color: red; */
 }
 
-.heading2 {
-  margin-top: 40px;
+.bar1,
+.bar2,
+.bar3 {
+  background-color: #6b7280;
+  width: 80%;
+  height: 5px;
+  border-radius: 5px;
+}
+
+main {
+  width: clamp(370px, 75vw, 800px);
+  margin: 0 auto;
+}
+
+.ul-list-name {
+  font-size: 1.8rem;
+  background-image: linear-gradient(to right, #1f51ff, lightblue);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 input:focus {
@@ -69,7 +108,6 @@ input:focus {
   background-color: var(--INPUT-COLOR);
   color: var(--FONT-COLOR);
   padding: var(--PADDING);
-  margin-top: var(--MARGIN);
   border-radius: var(--BORDER-RADIUS);
   width: calc(100% - 99px);
   border: none;
@@ -79,6 +117,7 @@ input:focus {
   background-color: var(--LI-COLOR);
   color: var(--FONT-COLOR);
   border: none;
+  width: calc(100% - 150px);
 }
 
 .edit-li-Input-Color {
@@ -96,9 +135,10 @@ input:focus {
   justify-content: space-between;
 }
 
-.btnContainer:last-child {
+.btnContainer {
+  width: 100px;
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 button {
@@ -126,7 +166,13 @@ button {
 
 .deleteBtn-Animation {
   animation-name: deleteAnimation;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.navBtn-Animation {
+  animation-name: hamburger;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -136,5 +182,11 @@ button {
   to {
     transform: rotate(2deg);
     opacity: 0;
+  }
+}
+
+@keyframes hamburger {
+  to {
+    transform: rotate(-90deg);
   }
 }
