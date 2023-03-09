@@ -19,6 +19,10 @@ button {
   text-align: center;
 }
 
+.active-list {
+  background-color: #1f51ff;
+}
+
 /* || VARIABLES */
 
 :root {
@@ -121,6 +125,10 @@ main {
   flex-direction: column;
 }
 
+form {
+  width: 100%;
+}
+
 .newListInput {
   width: 100%;
   height: 5vh;
@@ -151,7 +159,12 @@ ul {
 }
 
 .ul-list-name {
-  font-size: 1.8rem;
+  font-size: var(--FS);
+  color: white;
+}
+
+.list-title {
+  font-size: var(--FS);
   background-image: linear-gradient(to right, #1f51ff, lightblue);
   -webkit-background-clip: text;
   color: transparent;
@@ -225,6 +238,25 @@ button {
   animation-name: deleteAnimation;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+}
+
+.task-container {
+  max-height: 60vh;
+  overflow: scroll;
+}
+
+footer,
+.deleteListBtn {
+  width: 100vw;
+}
+
+.deleteListBtn {
+  background-color: var(--LI-COLOR);
+  height: 10vh;
+  font-size: var(--FS);
+  color: red;
+  position: fixed;
+  bottom: 0;
 }
 
 /* ANIMATIONS */

@@ -6,46 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My To-Do List</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <script type="module" src="./js/main.js"></script>
+    <script defer src="./js/main.js"></script>
   </head>
   <body>
     <header>
       <h1 class="heading">My Lists</h1>
-      <button class="navBtn" id="navBtn">
+      <button class="navBtn" id="hamburgerBtn">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
       </button>
     </header>
+
     <main>
-      <div class="list-names" id="list-names">
-        <form id="newListForm">
+      <article class="list-names" id="list-names">
+        <form id="NewListForm">
           <input
             type="text"
-            id="newListInput"
+            id="NewListInput"
             placeholder="Enter List Name"
             autocomplete="off"
-            class="newListInput"
+            class="newListInput center"
           />
           <button type="submit" class="newListBtn">Add new list</button>
         </form>
-        <ul id="newList">
-          <li class="listTitle center ul-list-name">Grocery List</li>
-        </ul>
-      </div>
-      <h2 class="heading center ul-list-name">Grocery List</h2>
-      <form id="form">
-        <input
-          type="text"
-          id="input"
-          placeholder="Enter Task"
-          autocomplete="off"
-          class="addInput"
-        />
-        <button class="addTaskBtn" type="submit">Add task</button>
-      </form>
-      <h2 class="heading">Tasks</h2>
-      <ul id="list"></ul>
+        <ul id="lists"></ul>
+      </article>
+
+      <article id="list-display-container">
+        <h2 class="heading center list-title" id="list-title"></h2>
+        <form id="new-task-form">
+          <input
+            type="text"
+            id="new-task-input"
+            placeholder="Enter Task"
+            autocomplete="off"
+            class="addInput"
+          />
+          <button class="addTaskBtn" type="submit">Add task</button>
+        </form>
+        <h2 class="heading">Tasks</h2>
+        <ul class="task-container" id="task-container"></ul>
+      </article>
     </main>
+
+    <footer>
+      <button class="deleteListBtn" id="delete-list-btn">Delete List</button>
+    </footer>
   </body>
 </html>
