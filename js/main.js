@@ -1,18 +1,20 @@
 "use strict";
 
 const hamburgerBtn = document.querySelector("#hamburgerBtn");
-const listNames = document.querySelector("#list-names");
+const listNames = document.querySelector("#listNames");
 
 const listsContainer = document.querySelector("#lists");
 const newListForm = document.querySelector("#NewListForm");
 const newListInput = document.querySelector("#NewListInput");
-const deleteListBtn = document.querySelector("#delete-list-btn");
+const deleteListBtn = document.querySelector("#deleteListBtn");
 
-const listDisplayContainer = document.querySelector("#list-display-container");
-const listTitleElement = document.querySelector("#list-title");
-const tasksContainer = document.querySelector("#task-container");
-const newTaskForm = document.querySelector("#new-task-form");
-const newTaskInput = document.querySelector("#new-task-input");
+const listDisplayContainer = document.querySelector("#listDisplayContainer");
+const listTitleElement = document.querySelector("#listTitle");
+const tasksContainer = document.querySelector("#taskContainer");
+const newTaskForm = document.querySelector("#newTaskForm");
+const newTaskInput = document.querySelector("#newTaskInput");
+
+const paragraphContainer = document.querySelector("#paragraphContainer");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
@@ -106,9 +108,11 @@ function render() {
   const selectedList = lists.find(function (list) {
     return list.id === selectedListId;
   });
-  if (selectedListId === null) {
+  if (selectedListId === "null" || selectedListId === null) {
     listDisplayContainer.style.display = "none";
+    paragraphContainer.style.display = "flex";
   } else {
+    paragraphContainer.style.display = "none";
     listDisplayContainer.style.display = "block";
     listTitleElement.innerText = selectedList.name;
     clearElement(tasksContainer);
@@ -136,7 +140,7 @@ function renderTasks(selectedList) {
     // create edit button
     const editBtn = document.createElement("button");
     editBtn.setAttribute("id", "edit");
-    editBtn.classList.add("editBtn");
+    editBtn.classList.add("edit-btn");
     editBtn.innerText = "Edit";
     // function of edit button.
     editBtn.addEventListener("click", function () {
@@ -155,11 +159,11 @@ function renderTasks(selectedList) {
     // create delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("id", "delete");
-    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "Delete";
     // function of delete button. Plays animation, waits 2 seconds, then deletes the grandparent element on click
     deleteBtn.addEventListener("click", function () {
-      li.classList.add("deleteBtn-Animation");
+      li.classList.add("delete-btn-Animation");
       for (let i = 0; i < selectedList.tasks.length; i++) {
         if (selectedList.tasks[i].name === task.name) {
           selectedList.tasks.splice(i, 1);
