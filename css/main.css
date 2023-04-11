@@ -38,6 +38,7 @@ button {
   --FONT-COLOR: #fff;
   --PINK: #ec4899;
   --PURPLE: #8b5cf6;
+  --DELETE-BTN-COLOR: red;
 
   /* BORDERS */
   --BORDER-RADIUS: 10px;
@@ -89,7 +90,7 @@ body {
 .hamburger-btn__bar1,
 .hamburger-btn__bar2,
 .hamburger-btn__bar3 {
-  background-color: #6b7280;
+  background-color: var(--HEADING-COLOR);
   width: 80%;
   height: 5px;
   border-radius: 5px;
@@ -233,7 +234,7 @@ button {
 
 .delete-btn {
   background-color: transparent;
-  color: red;
+  color: var(--DELETE-BTN-COLOR);
 }
 
 .delete-btn-Animation {
@@ -263,7 +264,7 @@ button {
   background-color: var(--LI-COLOR);
   height: 10vh;
   font-size: var(--FS);
-  color: red;
+  color: var(--DELETE-BTN-COLOR);
 }
 
 /* ANIMATIONS */

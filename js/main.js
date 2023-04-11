@@ -1,5 +1,7 @@
+// enable JavaScript "strict mode"
 "use strict";
 
+// variables
 const hamburgerBtn = document.querySelector("#hamburgerBtn");
 const listNames = document.querySelector("#listNames");
 
@@ -19,9 +21,11 @@ const paragraphContainer = document.querySelector("#paragraphContainer");
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
 
+// JSON variable
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
+// hides/shows create list page
 hamburgerBtn.addEventListener("click", function () {
   hamburgerBtn.classList.toggle("change");
   if (hamburgerBtn.classList.contains("change")) {
@@ -40,6 +44,7 @@ listsContainer.addEventListener("click", function (e) {
   }
 });
 
+// deletes selected list
 deleteListBtn.addEventListener("click", function (e) {
   lists = lists.filter(function (list) {
     return list.id !== selectedListId;
@@ -48,6 +53,7 @@ deleteListBtn.addEventListener("click", function (e) {
   saveAndRender();
 });
 
+// creates a new list
 newListForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const listName = formatString(newListInput.value);
@@ -61,6 +67,7 @@ newListForm.addEventListener("submit", function (e) {
   }
 });
 
+// creates a new task
 newTaskForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const taskName = formatString(newTaskInput.value);
@@ -77,6 +84,7 @@ newTaskForm.addEventListener("submit", function (e) {
   }
 });
 
+// list object structure
 function createList(name) {
   return {
     id: Date.now().toString(),
@@ -85,6 +93,7 @@ function createList(name) {
   };
 }
 
+// task object structure
 function createTask(name) {
   return {
     name: name,
@@ -96,11 +105,13 @@ function saveAndRender() {
   render();
 }
 
+// saves data to local storage.
 function save() {
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
   localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 }
 
+// clears listsContainer, renders listsContainer, and allows user to select specific list or shows message if none is selected
 function render() {
   clearElement(listsContainer);
   renderLists();
@@ -120,6 +131,7 @@ function render() {
   }
 }
 
+// functionality and look for each task (list item) in a list
 function renderTasks(selectedList) {
   selectedList.tasks.forEach(function (task) {
     // create new list-item
@@ -184,6 +196,7 @@ function renderTasks(selectedList) {
   });
 }
 
+// creates list item, styles it, then appends it to the listsContainer
 function renderLists() {
   lists.forEach((list) => {
     const listElement = document.createElement("li");
@@ -197,12 +210,14 @@ function renderLists() {
   });
 }
 
+// clears list container. Removes all children from element
 function clearElement(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
 
+// removes spaces from beginning & end of strings. Also it there is more than 1 space between strings then it will replace it with one space.
 function formatString(string) {
   const regex = / {2,}/g;
   const formatedString = string.replaceAll(regex, " ").trim();
